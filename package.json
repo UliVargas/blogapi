@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "alterdb": "ts-node -r dotenv/config src/database/orm/sequelize/syncdb.ts dotenv_config_path=env/.env",
+    "alterdb": "ts-node -r dotenv/config src/database/orm/sequelize/alterdb.ts dotenv_config_path=env/.env",
     "dev": "nodemon -r dotenv/config src/server/index.ts dotenv_config_path=env/.env",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

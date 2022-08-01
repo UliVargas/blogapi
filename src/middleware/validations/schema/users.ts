@@ -13,3 +13,8 @@ export const createSchema = Joi.object({
   email: props.email.required(),
   password: props.password.required()
 })
+
+export const loginSchema = Joi.object({
+  email: props.email.required(),
+  password: props.password.required()
+})
