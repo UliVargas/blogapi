@@ -10,6 +10,7 @@
     "dbgenerate:prod": "npx prisma generate --schema=./src/database/orm/prisma/schema/prod/schema.prisma",
     "dbpush:dev": "npx prisma db push --schema=./src/database/orm/prisma/schema/dev/schema.prisma",
     "dbpush:prod": "npx prisma db push --schema=./src/database/orm/prisma/schema/prod/schema.prisma",
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
