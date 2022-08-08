@@ -1,15 +1,17 @@
 import { Post } from '../entities/post.entity'
-import { PostsModel, UsersModel } from '../database/orm/sequelize/models'
+import prisma from '../database/orm/prisma/client/prisma'
 
 export const createPostService = async (body: Post) => {
-  return await PostsModel.create({
-    ...body
+  return await prisma.posts.create({
+    data: {
+      ...body
+    }
   })
 }
 
 export const getAllPostsService = async () => {
-  const posts = await PostsModel.findAll({
-    include: UsersModel
+  const posts: any = await prisma.posts.findMany({
+    include: { user: true }
   })
 
   return posts.map(post => toResponse(post.toJSON()))

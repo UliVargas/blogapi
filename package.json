@@ -4,14 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "alterdb": "ts-node -r dotenv/config src/database/orm/sequelize/alterdb.ts dotenv_config_path=env/.env",
-    "dev": "nodemon -r dotenv/config src/server/index.ts dotenv_config_path=env/.env",
+    "start": "npm run -r dbgenerate:prod | node ./dist/server/index.js npx prisma generate --schema=./src/database/orm/prisma/schema/prod/schema.prisma ",
+    "dev": "npm run -r dbgenerate:dev | nodemon -r dotenv/config ./src/server/index.ts dotenv_config_path=./src/database/orm/prisma/dev/.env",
+    "dbgenerate:dev": "npx prisma generate --schema=./src/database/orm/prisma/schema/dev/schema.prisma",
+    "dbgenerate:prod": "npx prisma generate --schema=./src/database/orm/prisma/schema/prod/schema.prisma",
+    "dbpush:dev": "npx prisma db push --schema=./src/database/orm/prisma/schema/dev/schema.prisma",
+    "dbpush:prod": "npx prisma db push --schema=./src/database/orm/prisma/schema/prod/schema.prisma",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@prisma/client": "^4.1.1",
     "bcryptjs": "^2.4.3",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
@@ -37,6 +42,7 @@
     "eslint-plugin-promise": "^6.0.0",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.19",
+    "prisma": "^4.1.1",
     "ts-node": "^10.9.1",
     "typescript": "^4.7.4"
   }

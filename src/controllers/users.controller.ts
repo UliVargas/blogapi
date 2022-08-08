@@ -3,13 +3,11 @@ import { Request, Response } from 'express'
 import {
   createUserservice,
   deleteUserService,
-  findByEmail,
+  findByIdService,
   getAllUsersService,
+  loginService,
   updateUserService
 } from '../services/users.service'
-
-import { comparePassword } from '../middleware/auth/bcrypt'
-import { generate } from '../middleware/auth/JWT'
 
 export const getAllUsers = async (req: Request, res: Response) => {
   const users = await getAllUsersService()
@@ -35,13 +33,11 @@ export const deleteUser = async (req: Request, res: Response) => {
 
 export const login = async (req: Request, res: Response) => {
   const { email, password } = req.body
-  const user: any = await findByEmail(email)
-  if (!user) throw new Error('USER_NOT_FOUND')
-  const isValidUser = await comparePassword(password, user.password)
-  if (!isValidUser) throw new Error('INVALID_CREDENTIALS')
-  const payload = {
-    user: user.id
-  }
-  const token = generate(payload)
-  res.send({ ...payload, token })
+  const login = await loginService(email, password)
+  res.send(login)
+}
+
+export const findById = async (req: Request, res: Response) => {
+  const user = await findByIdService(req.params.userId)
+  res.send(user)
 }
