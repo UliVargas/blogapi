@@ -1,6 +1,7 @@
 import Router from 'express-promise-router'
 import usersValidator from '../../middleware/validations/function/users'
 import { createUser, getAllUsers, login, deleteUser, findById } from '../../controllers/users.controller'
+
 import auth from '../../middleware/auth/JWT'
 
 const router = Router()
