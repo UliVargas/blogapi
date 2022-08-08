@@ -7,7 +7,7 @@ import {
   getAllUsersService,
   loginService,
   updateUserService
-} from '../services/users.service'
+} from '../../infrastructure/services/users.service'
 
 export const getAllUsers = async (req: Request, res: Response) => {
   const users = await getAllUsersService()

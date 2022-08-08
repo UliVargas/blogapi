@@ -1,7 +1,7 @@
-import { User } from '../entities/user.entity'
-import prisma from '../database/orm/prisma/client/prisma'
-import { hashPassword, comparePassword } from '../middleware/auth/bcrypt'
-import { generate } from '../middleware/auth/JWT'
+import { User } from '../../core/entities/user.entity'
+import prisma from '../orm/prisma/client/prisma'
+import { hashPassword, comparePassword } from '../../interface/middleware/auth/bcrypt'
+import { generate } from '../../interface/middleware/auth/JWT'
 import { createTokenService } from './token.service'
 
 export const getAllUsersService = async () => {

@@ -1,5 +1,5 @@
-import { Post } from '../entities/post.entity'
-import prisma from '../database/orm/prisma/client/prisma'
+import { Post } from '../../core/entities/post.entity'
+import prisma from '../orm/prisma/client/prisma'
 
 export const createPostService = async (body: Post) => {
   return await prisma.posts.create({

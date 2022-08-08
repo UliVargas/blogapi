@@ -1,4 +1,4 @@
-import prisma from '../database/orm/prisma/client/prisma'
+import prisma from '../orm/prisma/client/prisma'
 
 export const createTokenService = async (token: string, userId: string) => {
   return await prisma.accessToken.create({

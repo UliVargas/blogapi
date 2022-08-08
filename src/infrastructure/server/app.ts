@@ -1,7 +1,7 @@
 import express, { Express, json } from 'express'
 import morgan from 'morgan'
 
-import routes from '../v1/routes/index.routes'
+import routes from '../../interface/v1/routes/index.routes'
 
 const app: Express = express()
 
