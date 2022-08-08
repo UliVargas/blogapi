@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run -r dbgenerate:prod | node ./dist/server/index.js npx prisma generate --schema=./src/database/orm/prisma/schema/prod/schema.prisma ",
+    "start": "npm run -r dbgenerate:prod | node ./dist/server/index.js",
     "dev": "npm run -r dbgenerate:dev | nodemon -r dotenv/config ./src/server/index.ts dotenv_config_path=./src/database/orm/prisma/dev/.env",
     "dbgenerate:dev": "npx prisma generate --schema=./src/database/orm/prisma/schema/dev/schema.prisma",
     "dbgenerate:prod": "npx prisma generate --schema=./src/database/orm/prisma/schema/prod/schema.prisma",
