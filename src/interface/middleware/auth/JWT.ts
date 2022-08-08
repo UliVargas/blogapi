@@ -11,3 +11,16 @@ export const generate = (payload: any) => {
 export const decode = (accessToken: string) => {
   return jwt.verify(accessToken, JWT_SECRET_KEY)
 }
+
+export default (req, res, next) => {
+  const authHeader = req.headers.authorization
+  const token = authHeader && authHeader.split(' ')[1]
+
+  try {
+    req.USER = decode(token)
+    req.token = token
+    next()
+  } catch (error) {
+    return res.sendStatus(403)
+  }
+}
